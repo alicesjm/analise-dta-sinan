@@ -20,7 +20,8 @@ epidemiológicos e implicações para a vigilância sanitária"**.
 ## Dados
 
 Fonte: banco de dados de surtos de Doenças de Transmissão Hídrica e Alimentar
-(DTHA), SINAN, Ministério da Saúde (DATASUS), 2007–2024. Os autores consolidaram os
+(DTHA), SINAN, Ministério da Saúde (DATASUS), 2007–2024, disponível em
+https://datasus.saude.gov.br/transferencia-de-arquivos/ (acesso em 04/09/2026). Os autores consolidaram os
 arquivos anuais 2010–2025 em uma planilha (`Dados_de_2010_a_2025.xlsx`, uma aba por
 ano). Os dados são agregados por surto/notificação, sem identificação de pessoas.
 

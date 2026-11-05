@@ -2,6 +2,7 @@
 
 **Fonte:** banco de dados de surtos de DTHA (SINAN, Ministério da Saúde/DATASUS),
 2007–2024. Este estudo usa 2010–2024.
+**URL:** https://datasus.saude.gov.br/transferencia-de-arquivos/ (acesso em 04/09/2026).
 
 **Como o arquivo foi montado:** os autores reuniram os arquivos anuais exportados da
 fonte em uma única planilha Excel, `Dados_de_2010_a_2025.xlsx`, com **uma aba por
