@@ -10,6 +10,7 @@ epidemiológicos e implicações para a vigilância sanitária"**.
 
 | Arquivo | Função |
 |---|---|
+| `converter_parquet_para_xlsx.py` | Converte os `.parquet` do DATASUS na planilha de entrada (códigos → rótulos, UF em sigla, texto corrigido) |
 | `analise_dta_sinan.py` | Script único: lê a planilha, trata os dados e gera tabelas e figuras |
 | `conferir_resultados.py` | Compara as saídas com os valores publicados no artigo |
 | `dados/populacao_uf.csv` | População média por UF (IBGE, Tabela 6579) usada nas taxas |
@@ -20,14 +21,15 @@ epidemiológicos e implicações para a vigilância sanitária"**.
 ## Dados
 
 Fonte: banco de dados de surtos de Doenças de Transmissão Hídrica e Alimentar
-(DTHA), SINAN, Ministério da Saúde (DATASUS), 2007–2024, disponível em
-https://datasus.saude.gov.br/transferencia-de-arquivos/ (acesso em 04/09/2026). Os autores consolidaram os
-arquivos anuais 2010–2025 em uma planilha (`Dados_de_2010_a_2025.xlsx`, uma aba por
-ano). Os dados são agregados por surto/notificação, sem identificação de pessoas.
+(DTHA), SINAN, Ministério da Saúde (DATASUS), 2007–2024. Os autores consolidaram os
+arquivos anuais (`SDTABRaa.parquet`, baixados do DATASUS em 04/09/2026) em uma
+planilha (`Dados_de_2010_a_2025.xlsx`, uma aba por ano); `converter_parquet_para_xlsx.py`
+refaz essa conversão a partir dos arquivos originais. Os dados são agregados por surto/notificação, sem identificação de pessoas.
 
-**A planilha não é distribuída neste repositório.** Origem, formato esperado e
-colunas usadas estão em `dados/LEIA-ME_dados.md`. Para rodar, coloque a planilha em
-`dados/` ou aponte o caminho com `--entrada`. As tabelas e figuras agregadas
+**Os arquivos originais e a planilha não são distribuídos neste repositório.** Origem, formato esperado e
+colunas usadas estão em `dados/LEIA-ME_dados.md`. Para rodar, baixe os `.parquet` do DATASUS (ver `dados/LEIA-ME_dados.md`), gere a planilha com
+`python converter_parquet_para_xlsx.py --entrada PASTA_DOS_PARQUET --saida dados/Dados_de_2010_a_2025.xlsx`
+e aponte o caminho com `--entrada`. As tabelas e figuras agregadas
 resultantes estão em `resultados/`.
 
 ## Como reproduzir

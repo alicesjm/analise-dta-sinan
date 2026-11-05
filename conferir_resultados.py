@@ -31,6 +31,10 @@ for uf, v in {"PE": 111646, "MG": 40093, "RS": 37511, "RJ": 30466, "SC": 29299,
 checa("taxa PE", t3.loc["PE", "taxa_100mil"], 1192.0, 0.05)
 checa("taxa SP", t3.loc["SP", "taxa_100mil"], 45.3, 0.05)
 checa("taxa SE", t3.loc["SE", "taxa_100mil"], 479.9, 0.05)
+checa("MS pessoas", t3.loc["MS", "pessoas_afetadas"], 1999)
+checa("MT pessoas", t3.loc["MT", "pessoas_afetadas"], 882)
+checa("taxa MS", t3.loc["MS", "taxa_100mil"], 74.2, 0.05)
+checa("taxa MT", t3.loc["MT", "taxa_100mil"], 26.2, 0.05)
 checa("total com UF", t3["pessoas_afetadas"].sum(), 396400)
 checa("PR é o 8º", list(t3.index).index("PR") + 1, 8)
 

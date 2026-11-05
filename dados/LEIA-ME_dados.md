@@ -2,13 +2,24 @@
 
 **Fonte:** banco de dados de surtos de DTHA (SINAN, Ministério da Saúde/DATASUS),
 2007–2024. Este estudo usa 2010–2024.
-**URL:** https://datasus.saude.gov.br/transferencia-de-arquivos/ (acesso em 04/09/2026).
 
-**Como o arquivo foi montado:** os autores reuniram os arquivos anuais exportados da
-fonte em uma única planilha Excel, `Dados_de_2010_a_2025.xlsx`, com **uma aba por
+**Como o arquivo foi montado:** os arquivos anuais `SDTABRaa.parquet` (DATASUS,
+transferência de arquivos, acesso em 04/09/2026) são convertidos por
+`converter_parquet_para_xlsx.py` em uma única planilha Excel, `Dados_de_2010_a_2025.xlsx`, com **uma aba por
 ano**, nomeada com o ano (`2010`, `2011`, …, `2025`).
 A planilha não é redistribuída aqui; a decisão sobre sua publicação depende da
 verificação das condições de redistribuição da fonte.
+
+### Regras da conversão
+- Quantidade total de casos ← `QT_TOTAL_C`; UF ← `SG_UF` (código IBGE → sigla);
+  Local provável da exposição ← `CS_LOCAL` (1 Hospital … 11 Via oral); Agente ←
+  `AGENTE_ETI` (2010–2021) ou `AGENTE_ET1` (2022–2024); Alimento ← `ALIMENTO_C`.
+- Os arquivos misturam codificações de texto (UTF-8 lido como Latin-1 e CP850); o
+  script repara os rótulos.
+- Verificação: contra a planilha construída antes, as 10.336 linhas e 399.656 pessoas
+  afetadas coincidem. A única divergência de conteúdo era de 17 linhas de 2024 (462
+  pessoas) que a planilha antiga trazia como MS e a fonte registra como MT (código 51);
+  vale a fonte (MS 1.999; MT 882).
 
 ## O que o script espera
 
