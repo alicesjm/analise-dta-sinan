@@ -13,24 +13,28 @@ epidemiológicos e implicações para a vigilância sanitária"**.
 | `analise_dta_sinan.py` | Script único: lê a planilha, trata os dados e gera tabelas e figuras |
 | `conferir_resultados.py` | Compara as saídas com os valores publicados no artigo |
 | `dados/populacao_uf.csv` | População média por UF (IBGE, Tabela 6579) usada nas taxas |
-| `dados/Dados_de_2010_a_2025.xlsx` | Planilha de entrada (ver "Dados") |
+| `dados/LEIA-ME_dados.md` | Origem dos dados e formato esperado da planilha de entrada |
 | `requirements.txt` | Versões das bibliotecas |
 | `resultados/` | Saídas (11 tabelas em CSV, 10 figuras em PNG) |
 
 ## Dados
 
-Fonte: Sistema de Informação de Agravos de Notificação (SINAN), módulo de
-surtos de DTA, Ministério da Saúde, consultado e exportado pelos autores.
-A planilha `Dados_de_2010_a_2025.xlsx` reúne uma aba por ano (2010–2025),
-com 10.336 registros no recorte 2010–2024. Os dados são agregados por
-surto/notificação, sem identificação de pessoas.
+Fonte: banco de dados de surtos de Doenças de Transmissão Hídrica e Alimentar
+(DTHA), SINAN, Ministério da Saúde (DATASUS), 2007–2024. Os autores consolidaram os
+arquivos anuais 2010–2025 em uma planilha (`Dados_de_2010_a_2025.xlsx`, uma aba por
+ano). Os dados são agregados por surto/notificação, sem identificação de pessoas.
+
+**A planilha não é distribuída neste repositório.** Origem, formato esperado e
+colunas usadas estão em `dados/LEIA-ME_dados.md`. Para rodar, coloque a planilha em
+`dados/` ou aponte o caminho com `--entrada`. As tabelas e figuras agregadas
+resultantes estão em `resultados/`.
 
 ## Como reproduzir
 
 ```bash
 python -m venv .venv && source .venv/bin/activate     # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
-python analise_dta_sinan.py --entrada dados/Dados_de_2010_a_2025.xlsx --saida resultados
+python analise_dta_sinan.py --entrada dados/Dados_de_2010_a_2025.xlsx --saida resultados   # a planilha deve estar em dados/
 python conferir_resultados.py resultados              # deve terminar com "DIVERGÊNCIAS: 0"
 ```
 
@@ -76,11 +80,13 @@ análise: DTA no Brasil (2010–2024), SINAN. Zenodo, 2025. DOI: _a preencher_.
 
 ## Uso de inteligência artificial
 
-O script foi (re)escrito com apoio do assistente de IA Claude (Anthropic) e
-conferido pelos autores contra a planilha original e contra os resultados
-publicados (`conferir_resultados.py`). Os autores respondem pelo conteúdo.
+Ferramentas de inteligência artificial generativa (Claude, Anthropic) foram usadas
+na elaboração e revisão do código, na realização e conferência dos cálculos e na
+revisão da redação. Os autores são responsáveis pela verificação do código, pela
+consistência dos resultados e pelo conteúdo final. A reprodução é verificável com
+`conferir_resultados.py`.
 
 ## Licença
 
-Código: MIT (`LICENSE`). Dados e resultados: CC BY 4.0 (fonte original:
-SINAN/Ministério da Saúde).
+Código: MIT (`LICENSE`). Resultados agregados (`resultados/`): CC BY 4.0
+(fonte original: SINAN/Ministério da Saúde).

@@ -382,6 +382,10 @@ def main():
     ap.add_argument("--saida", default="resultados")
     a = ap.parse_args()
 
+    if not os.path.exists(a.entrada):
+        sys.exit(f"Planilha não encontrada: {a.entrada}\n"
+                 "Ela não é distribuída neste repositório. Veja dados/LEIA-ME_dados.md "
+                 "para a origem e o formato esperado, ou use --entrada CAMINHO.xlsx")
     os.makedirs(f"{a.saida}/tabelas", exist_ok=True)
     os.makedirs(f"{a.saida}/figuras", exist_ok=True)
 
